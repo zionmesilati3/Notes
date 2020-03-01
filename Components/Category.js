@@ -84,20 +84,23 @@ const MoveToNote=(note)=>{
   <ScrollView style={styles.container}>
     <View style={styles.con1}>
       <Text style={styles.header}>{route.params.name} Notes:</Text>
-      {notes.map((n,key)=><Card key={key} style={styles.container2} onPress={()=>MoveToNote(n)}><Text style={styles.secH}>{n.title}</Text><Button onPress={()=>delNote(n)} icon="delete" text="delete"/></Card>)}
+      {notes.map((n,key)=><Card style={{container:{backgroundColor:'#3838c7'}}} key={key} onPress={()=>MoveToNote(n)}><Text style={styles.secH}>{n.title}</Text><Button onPress={()=>delNote(n)} icon="delete" text="delete"/></Card>)}
     </View>
     </ScrollView>
     
-      <View style={styles.con}>
-        <ActionButton onPress={()=>navigation.navigate('CNote',{categoryName:route.params.name})} />
-      </View>
+
+    <ActionButton style={{container:{backgroundColor:'#3838c7'}}} onPress={()=>navigation.navigate('CNote',{categoryName:route.params.name})} icon="note-add" />
+
 
     </View>
   );
 }
 
+
+
+
 /*
-  just some styles i need to work on that
+  just some styles i need to work on that!!
 */
 
 const styles = StyleSheet.create({

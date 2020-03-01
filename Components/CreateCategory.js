@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { View, Text,StyleSheet,TextInput } from 'react-native';
-import { Button,Card } from 'react-native-material-ui';
+import { Button,Card,ActionButton } from 'react-native-material-ui';
 import {AsyncStorage} from 'react-native';
 
 export default function CreateCategory(){
@@ -55,14 +55,12 @@ export default function CreateCategory(){
         <View style={styles.container}>
             <View style={styles.input}>
                 <Text>Title</Text>
-                <TextInput onChangeText={text=>setCname(text)} value={cname} />
+                <Card style={{container:{backgroundColor:'#3838c7',alignSelf:'stretch'}}}><TextInput onChangeText={text=>setCname(text)} value={cname} /></Card>
             </View>
 
-            <View style={styles.buttons}>
-                <Button text="create" icon="add-circle" onPress={()=>_storeData(cname)} />
-                <Button text="show item in storage" icon="movie" onPress={()=>_retrieveData()} />
-                <Text></Text>
-            </View>
+
+                <ActionButton style={{container:{backgroundColor:'#3838c7'}}} icon="add" onPress={()=>_storeData(cname)} />
+
         </View>
     )
 }
@@ -74,7 +72,7 @@ const styles = StyleSheet.create({
   },
   input:{
     flex:1,
-    alignSelf:'flex-start',
+    alignSelf:'stretch',
   },    
   buttons:{
       flex:0,

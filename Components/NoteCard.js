@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { View, Text,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet,Image } from 'react-native';
 import { ActionButton,Card,Button } from 'react-native-material-ui';
 import { reset } from 'expo/build/AR';
 import {AsyncStorage} from 'react-native';
@@ -14,7 +14,7 @@ export default function NoteCard({route,navigation}){
           let arr=[];
             let value=await AsyncStorage.getItem('noteList');
             JSON.parse(value).map((n)=>{
-              if(n.category===note.category && n.content===note.content && n.title===note.title){
+              if(n.category===note.category && n.content===note.content && n.title===note.title && n.photo===note.photo){
                 arr.push(upNote);
               }
               else{
@@ -32,19 +32,17 @@ export default function NoteCard({route,navigation}){
         <View style={styles.con}>
             <View style={styles.con}>
                 <View style={styles.view}>
-                    <Text style={styles.title}>{note.title}</Text>
+                    <Card style={{container:{backgroundColor:'#3838c7'}}}><Text style={styles.title}>{note.title}</Text></Card>
                 </View>
 
                 <View style={styles.content}>
-                    <Card><Text style={styles.content}>{note.content}</Text></Card>
+                    <Card style={{container:{backgroundColor:'#3838c7',alignSelf:'stretch'}}}><Text style={styles.content}>{note.content}</Text></Card>
                 </View>
             </View>
 
-            <Text>still need to work on this update screen thing</Text>
-            
-            <View style={styles.viewB}>
-                <Button style={styles.button} icon="update" text="update" />
-            </View>
+            {note.photo && (<Image source={{uri:note.photo}} style={styles.image}/> )}
+
+<Text></Text>
         </View>
     )
 }
@@ -54,14 +52,18 @@ const styles = StyleSheet.create({
         alignSelf:'center'
     },
     viewB:{
-        alignSelf:'stretch',
-        backgroundColor:'#fff',
-        borderWidth:2
+        alignContent:'stretch',
+        backgroundColor:'#5af',
     },
     con:{
         flex:1,
         backgroundColor:'#5af',
     },
+    image:{
+        width:380,
+        height:300,
+        alignSelf:'center'
+      },
     view:{
         borderWidth:1,
         alignSelf:'stretch'

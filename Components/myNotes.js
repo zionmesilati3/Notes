@@ -73,13 +73,13 @@ function getCN(c){
             <View style={styles.container2}>
               <Text style={styles.header}>Categories</Text>
               <View style={{flex:1}}>
-                {categories.map((c,key)=><Card style={styles.card} key={key} onPress={()=>nav(c,getCN(c))}><Text style={styles.categories}>{c} {getCN(c).length}</Text></Card>)}
+                {categories.map((c,key)=><Card style={{container:{backgroundColor:'#3838c7'}}} key={key} onPress={()=>nav(c,getCN(c))}><Text style={styles.categories}>{c} {getCN(c).length}</Text></Card>)}
               </View>
             </View>
           </ScrollView>
           
           <View style={styles.act}>
-            <ActionButton onPress={()=>navigation.navigate('CCategory')} color="primary" />
+            <ActionButton style={{container:{backgroundColor:'#3838c7'}}} onPress={()=>navigation.navigate('CCategory')} color="primary" />
           </View>
         </View>
   );
